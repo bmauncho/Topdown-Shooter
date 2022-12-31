@@ -27,9 +27,7 @@ public class CharaterMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        
-
+        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         if (move.magnitude >= 0.1f) 
         {     
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
@@ -37,7 +35,6 @@ public class CharaterMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, currentAngle, 0);
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
-
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity* Time.deltaTime);
     }
