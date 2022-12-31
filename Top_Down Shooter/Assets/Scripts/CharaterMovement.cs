@@ -28,7 +28,7 @@ public class CharaterMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            transform.forward = move;
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
